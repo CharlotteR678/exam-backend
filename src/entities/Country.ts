@@ -8,7 +8,7 @@ export class Country extends BaseEntity {
   @Field(() => ID)
   id!: number;
 
-  @Column()
+  @Column({ unique: true })
   @Field()
   code!: string;
 
@@ -19,4 +19,8 @@ export class Country extends BaseEntity {
   @Column()
   @Field()
   emoji!: string;
+
+  @Column()
+  @Field()
+  continent!: string;
 }

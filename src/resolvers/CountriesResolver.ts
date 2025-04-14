@@ -20,6 +20,26 @@ export class CountriesResolver {
     return country;
   }
 
+  @Query(() => Country, { nullable: true })
+  async getCountryByCode(
+    @Arg("code", () => String) code: string
+  ): Promise<Country | null> {
+    const country = await Country.findOne({
+      where: { code },
+    });
+    return country;
+  }
+
+  @Query(() => [Country], { nullable: true })
+  async getCountriesByContinent(
+    @Arg("continent", () => String) continent: string
+  ): Promise<Country[] | null> {
+    const countries = await Country.find({
+      where: { continent },
+    });
+    return countries;
+  }
+
   @Mutation(() => Country)
   async createCountry(
     @Arg("data", () => CreateCountryInput) data: CreateCountryInput

@@ -14,4 +14,8 @@ export class CreateCountryInput {
   @Field()
   @IsString()
   emoji!: string;
+
+  @Field()
+  @IsString()
+  continent!: string;
 }
